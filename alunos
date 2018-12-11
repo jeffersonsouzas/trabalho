@@ -1,0 +1,57 @@
+import csv
+lstprnc= []
+class Aluno:
+    def __init__(self,nome,nota1,nota2,nota3,nota4):
+        self.nome = nome
+        self.nota1 = nota1
+        self.nota2 = nota2
+        self.nota3 = nota3
+        self.nota4 = nota4
+
+        def setNome(self, nome):
+            self.nome = nome
+
+        def setNota1(self, nota1):
+            self.nota1 = nota1
+
+        def setNota2(self, nota2):
+            self.nota2 = nota2
+
+        def setNota3(self, nota3):
+            self.nota3 = nota3
+
+        def setNota4(self, nota4):
+            self.nota4 = nota4
+
+
+while True:
+    des = int(input("informe a opção: \n1_Inserir.\n2_Alterar.\n3_Pesquisar.\n4_Deletar.\n5_Sair.\n"))
+    if(des<1 or des>4):
+        break
+    else:
+        if(des==1):
+            for i in range(0, 2):
+                nome = input("Informe o nome do aluno: ")
+                n1 = float(input("Informe a primeira nota: "))
+                n2 = float(input("Informe a segunda nota: "))
+                n3 = float(input("Informe a terceira nota: "))
+                n4 = float(input("Informe a quarta nota: "))
+                al = Aluno(nome, n1, n2, n3, n4)
+                lstprnc.append(al)
+            with open('bd.csv', 'w', newline='') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+                for i in range(0, 2):
+                    spamwriter.writerow(
+                        [lstprnc[i].nome, lstprnc[i].nota1, lstprnc[i].nota2, lstprnc[i].nota3, lstprnc[i].nota4])
+        elif(des==2):
+            alt=int(input("Informe como será alterado:\n1_Por nome.\n2_Por colocação.\n"))
+            if(alt==1):
+                alt_crit=("Informe o nome a ser procurado: ")
+                for i in range(0, 2):
+                    if (lstprnc[i].nome == alt_crit):
+                        
+        elif(des==3):
+            crit=input("Informe o nome a ser buscado: ")
+            for i in range(0,2):
+                if(lstprnc[i].nome==crit):
+                    print("Este é o aluno pesquisado: ",lstprnc[i].nome,"|",lstprnc[i].nota1,"|",lstprnc[i].nota2,"|",lstprnc[i].nota3,"|",lstprnc[i].nota4)
